@@ -109,7 +109,7 @@
           <div class="form__title">Персональные данные</div>
           <div class="preview__name">
             {{ formData.name }}
-            <template v-if="formData.age">{{ formData.age }},</template>
+            <template v-if="formData.age">, </template>
             {{ formData.age }}
           </div>
 
