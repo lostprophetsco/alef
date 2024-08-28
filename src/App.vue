@@ -18,7 +18,7 @@
           <li class="header__menu-item">
             <component
               :is="visibleSection === 'form' ? 'span' : 'a'"
-              @click="visibleSection = 'form'"
+              @click="visibleSectionHandler('form', $event)"
               :class="`header__menu-link ${visibleSection === 'form' ? 'header__menu-link--active' : ''}`"
               href="#"
             >
@@ -29,7 +29,7 @@
           <li class="header__menu-item" v-if="isLocalData">
             <component
               :is="visibleSection === 'preview' ? 'span' : 'a'"
-              @click="visibleSection = 'preview'"
+              @click="visibleSectionHandler('preview', $event)"
               :class="`header__menu-link ${visibleSection === 'preview' ? 'header__menu-link--active' : ''}`"
               href="#"
             >
@@ -146,6 +146,10 @@ const childrenRowCount = ref(1);
 const childrenSave = ref('Сохранить');
 const isLocalData = ref(!!localStorage.getItem('formData'));
 
+const visibleSectionHandler = (section: string, e: Event) => {
+  e.preventDefault();
+  visibleSection.value = section;
+};
 /**
  * @description Add new child
  */
